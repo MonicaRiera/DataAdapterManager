@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.dataadaptermanager.R;
@@ -33,6 +34,8 @@ public class MyListAdapter extends ArrayAdapter<MyListItem> {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         convertView = inflater.inflate(layoutResource, null);
+        ImageView img = convertView.findViewById(R.id.custom_adapter_main__img__thumbnail);
+        img.setImageResource(context.getResources().getIdentifier(listItems.get(position).getImageId(), "drawable", context.getPackageName()));
         TextView title = convertView.findViewById(R.id.custom_adapter_main__tv__title);
         title.setText(listItems.get(position).getTitle());
         TextView body = convertView.findViewById(R.id.custom_adapter_main__tv__body);
